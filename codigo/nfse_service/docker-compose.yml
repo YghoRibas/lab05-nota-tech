@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  nfse-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nfse-service
+    container_name: nfse-service
+    ports:
+      - 3000:3000

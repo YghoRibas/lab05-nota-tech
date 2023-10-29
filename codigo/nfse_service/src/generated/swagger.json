@@ -1,0 +1,751 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Nota Tech API",
+    "version": "0.0.1",
+    "description": "An API for simple CRUD NFSes."
+  },
+  "host": "0.0.0.0:3000",
+  "paths": {
+    "/api/nfses/:id/cancel": {
+      "post": {
+        "tags": [
+          "NFSe"
+        ],
+        "description": "Cancela uma `NFSe`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "The NFSe ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "cancelation success."
+          },
+          "400": {
+            "description": "invalid Params ID.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/nfses": {
+      "post": {
+        "tags": [
+          "NFSe"
+        ],
+        "description": "Create a new `NFSe`",
+        "requestBody": {
+          "required": true,
+          "description": "The `CreateUpdateNFSePayload` data.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateNfsePayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "deletion success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NFSe"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid json body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "NFSe"
+        ],
+        "description": "List a `NFSe` by CompanyId with pagination.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "description": "The quantity of items to be returned per page."
+          },
+          {
+            "in": "query",
+            "name": "orderBy",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "asc"
+            },
+            "description": "The order in which the data should be listed."
+          },
+          {
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "identificacao.numero",
+                "identificacao.competencia",
+                "createdAt"
+              ]
+            },
+            "description": "The type of ordering."
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "The page o return."
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ENVIADO",
+                "EMITIDO",
+                "CANCELADO",
+                "ERROR"
+              ]
+            },
+            "description": "The `Status` of the nfse."
+          },
+          {
+            "in": "query",
+            "name": "numero",
+            "schema": {
+              "type": "number"
+            },
+            "description": "The NFSe's number."
+          },
+          {
+            "in": "query",
+            "name": "competencia",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "Date of competencia of nfse"
+          },
+          {
+            "in": "query",
+            "name": "companyId",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Date of competencia of nfse",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "retrieving with success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NFSe"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid querystring",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "KeyTypes": {
+      "type": "string",
+      "enum": [
+        "CPF",
+        "CNPJ",
+        "EMAIL",
+        "TELEFONE",
+        "CHAVE_ALEATORIA"
+      ]
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "VALIDADO",
+        "RASCUNHO"
+      ]
+    },
+    "NfseStatus": {
+      "type": "string",
+      "enum": [
+        "ENVIADO",
+        "EMITIDO",
+        "CANCELADO",
+        "ERROR"
+      ]
+    },
+    "Tomador": {
+      "type": "object",
+      "properties": {
+        "identificacao": {
+          "$ref": "#/components/schemas/Identificacao"
+        },
+        "razaosocial": {
+          "type": "string"
+        },
+        "endereco": {
+          "$ref": "#/components/schemas/Endereco"
+        },
+        "contato": {
+          "$ref": "#/components/schemas/Contato"
+        }
+      }
+    },
+    "Identificacao": {
+      "type": "object",
+      "properties": {
+        "cpfcnpj": {
+          "type": "string",
+          "pattern": "([0-9]{2}?[0-9]{3}?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}?[0-9]{3}?[0-9]{3}?[0-9]{2})"
+        },
+        "inscricaomunicipal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "cpfcnpj"
+      ]
+    },
+    "Contato": {
+      "type": "object",
+      "properties": {
+        "telefone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "telefone",
+        "email"
+      ]
+    },
+    "Endereco": {
+      "type": "object",
+      "properties": {
+        "endereco": {
+          "type": "string"
+        },
+        "numero": {
+          "type": "string"
+        },
+        "complemento": {
+          "type": "string"
+        },
+        "bairro": {
+          "type": "string"
+        },
+        "codigoMunicipio": {
+          "type": "string"
+        },
+        "cidade": {
+          "type": "string"
+        },
+        "uf": {
+          "type": "string"
+        },
+        "cep": {
+          "type": "string"
+        }
+      }
+    },
+    "required": {
+      "0": "endereco",
+      "1": "codigoMunicipio"
+    },
+    "Valores": {
+      "type": "object",
+      "properties": {
+        "valorServicos": {
+          "type": "number"
+        },
+        "valorDeducoes": {
+          "type": "number"
+        },
+        "valorPis": {
+          "type": "number"
+        },
+        "valorCofins": {
+          "type": "number"
+        },
+        "valorInss": {
+          "type": "number"
+        },
+        "valorIr": {
+          "type": "number"
+        },
+        "valorCsll": {
+          "type": "number"
+        },
+        "issRetido": {
+          "type": "boolean"
+        },
+        "valorIss": {
+          "type": "number"
+        },
+        "outrasRetencoes": {
+          "type": "number"
+        },
+        "baseCalculo": {
+          "type": "number"
+        },
+        "aliquota": {
+          "type": "number"
+        },
+        "valorLiquidoNfse": {
+          "type": "number"
+        },
+        "valorIssRetido": {
+          "type": "number"
+        },
+        "descontoCondicionado": {
+          "type": "number"
+        },
+        "descontoIncondicionado": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "valorServicos",
+        "baseCalculo"
+      ]
+    },
+    "Servico": {
+      "type": "object",
+      "properties": {
+        "valores": {
+          "$ref": "#/components/schemas/Valores"
+        },
+        "itemListaServico": {
+          "type": "string"
+        },
+        "codigoCnae": {
+          "type": "string"
+        },
+        "codigoTributacaoMunicipio": {
+          "type": "string"
+        },
+        "discriminacao": {
+          "type": "string"
+        },
+        "codigoMunicipio": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "codigoMunicipio",
+        "discriminacao",
+        "valores",
+        "itemListaServico"
+      ]
+    },
+    "IdentificacaoNfse": {
+      "type": "object",
+      "properties": {
+        "naturezaOperacao": {
+          "type": "string"
+        },
+        "regimeEspecialTributacao": {
+          "type": "string",
+          "enum:s - Microempresa municipal - Estimativa - Sociedade de profissionais - Cooperativa": null
+        },
+        "optanteSimplesNacional": {
+          "type": "boolean"
+        },
+        "incetivadorCultural": {
+          "type": "boolean"
+        },
+        "competencia": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "InternalServerError": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "HTTP Status Code.",
+            "default": 500
+          },
+          "error": {
+            "type": "string",
+            "description": "HTTP Message Code.",
+            "default": "Internal Server Error"
+          },
+          "message": {
+            "type": "string",
+            "description": "A message describing the reason for the error."
+          }
+        }
+      },
+      "BadRequest": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "HTTP Status Code.",
+            "default": 400
+          },
+          "error": {
+            "type": "string",
+            "description": "HTTP Message Code.",
+            "default": "Bad Request"
+          },
+          "message": {
+            "type": "string",
+            "description": "A message describing the reason for the error."
+          }
+        }
+      },
+      "NFSe": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "identificacao": {
+            "$ref": "#/components/schemas/IdentificacaoNfse"
+          },
+          "prestador": {
+            "$ref": "#/components/schemas/Tomador"
+          },
+          "tomador": {
+            "$ref": "#/components/schemas/Tomador"
+          },
+          "servico": {
+            "$ref": "#/components/schemas/Servico"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ENVIADO",
+              "EMITIDO",
+              "CANCELADO",
+              "ERROR"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "identificacao",
+          "tomador",
+          "servico",
+          "companyId",
+          "status"
+        ]
+      },
+      "CreateNfsePayload": {
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "identificacao": {
+            "$ref": "#/components/schemas/IdentificacaoNfse"
+          },
+          "tomador": {
+            "$ref": "#/components/schemas/Tomador"
+          },
+          "servico": {
+            "$ref": "#/components/schemas/Servico"
+          }
+        },
+        "required": [
+          "companyId",
+          "identificacao",
+          "tomador",
+          "servico"
+        ]
+      },
+      "ID": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "Tomador": {
+        "type": "object",
+        "properties": {
+          "identificacao": {
+            "$ref": "#/components/schemas/Identificacao"
+          },
+          "razaosocial": {
+            "type": "string"
+          },
+          "endereco": {
+            "$ref": "#/components/schemas/Endereco"
+          },
+          "contato": {
+            "$ref": "#/components/schemas/Contato"
+          }
+        }
+      },
+      "Identificacao": {
+        "type": "object",
+        "properties": {
+          "cpfcnpj": {
+            "type": "string",
+            "pattern": "([0-9]{2}?[0-9]{3}?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}?[0-9]{3}?[0-9]{3}?[0-9]{2})"
+          },
+          "inscricaomunicipal": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "cpfcnpj"
+        ]
+      },
+      "Contato": {
+        "type": "object",
+        "properties": {
+          "telefone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "telefone",
+          "email"
+        ]
+      },
+      "Endereco": {
+        "type": "object",
+        "properties": {
+          "endereco": {
+            "type": "string"
+          },
+          "numero": {
+            "type": "string"
+          },
+          "complemento": {
+            "type": "string"
+          },
+          "bairro": {
+            "type": "string"
+          },
+          "codigoMunicipio": {
+            "type": "string"
+          },
+          "cidade": {
+            "type": "string"
+          },
+          "uf": {
+            "type": "string"
+          },
+          "cep": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "endereco",
+          "codigoMunicipio"
+        ]
+      },
+      "Valores": {
+        "type": "object",
+        "properties": {
+          "valorServicos": {
+            "type": "number"
+          },
+          "valorDeducoes": {
+            "type": "number"
+          },
+          "valorPis": {
+            "type": "number"
+          },
+          "valorCofins": {
+            "type": "number"
+          },
+          "valorInss": {
+            "type": "number"
+          },
+          "valorIr": {
+            "type": "number"
+          },
+          "valorCsll": {
+            "type": "number"
+          },
+          "issRetido": {
+            "type": "boolean"
+          },
+          "valorIss": {
+            "type": "number"
+          },
+          "outrasRetencoes": {
+            "type": "number"
+          },
+          "baseCalculo": {
+            "type": "number"
+          },
+          "aliquota": {
+            "type": "number"
+          },
+          "valorLiquidoNfse": {
+            "type": "number"
+          },
+          "valorIssRetido": {
+            "type": "number"
+          },
+          "descontoCondicionado": {
+            "type": "number"
+          },
+          "descontoIncondicionado": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "valorServicos",
+          "baseCalculo"
+        ]
+      },
+      "Servico": {
+        "type": "object",
+        "properties": {
+          "valores": {
+            "$ref": "#/components/schemas/Valores"
+          },
+          "itemListaServico": {
+            "type": "string"
+          },
+          "codigoCnae": {
+            "type": "string"
+          },
+          "codigoTributacaoMunicipio": {
+            "type": "string"
+          },
+          "discriminacao": {
+            "type": "string"
+          },
+          "codigoMunicipio": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "codigoMunicipio",
+          "discriminacao",
+          "valores",
+          "itemListaServico"
+        ]
+      },
+      "IdentificacaoNfse": {
+        "type": "object",
+        "properties": {
+          "numero": {
+            "type": "string"
+          },
+          "naturezaOperacao": {
+            "type": "string"
+          },
+          "regimeEspecialTributacao": {
+            "type": "string",
+            "enum": [
+              "Microempresa municipal",
+              "Estimativa",
+              "Sociedade de profissionais",
+              "Cooperativa"
+            ]
+          },
+          "optanteSimplesNacional": {
+            "type": "boolean"
+          },
+          "incetivadorCultural": {
+            "type": "boolean"
+          },
+          "competencia": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "tags": []
+}

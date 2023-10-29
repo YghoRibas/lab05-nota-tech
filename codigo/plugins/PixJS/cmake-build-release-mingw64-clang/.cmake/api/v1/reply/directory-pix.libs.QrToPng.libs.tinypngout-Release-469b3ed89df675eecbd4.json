@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "pix/libs/QrToPng/libs/tinypngout",
+		"source" : "pix/libs/QrToPng/libs/tinypngout"
+	}
+}

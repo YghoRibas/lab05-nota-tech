@@ -1,0 +1,7 @@
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.1.4/bin/ninja/win/x64/ninja.exe" -DCMAKE_C_COMPILER=C:/msys64/clang64/bin/clang.exe -DCMAKE_CXX_COMPILER=C:/msys64/clang64/bin/clang++.exe -G Ninja -S C:\Users\Administrator\CLionProjects\PixJS -B C:\Users\Administrator\CLionProjects\PixJS\cmake-build-release-mingw64-clang
+-- Using the multi-header code from C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-src/include/
+-- curlpp version=[0.8.1]
+-- curlpp version num=[000801]
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang

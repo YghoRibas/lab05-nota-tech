@@ -1,0 +1,307 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "pix",
+					"childIndexes" : 
+					[
+						2,
+						7,
+						8
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-pix-Debug-61742d20c51e4f02cafe.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "pix",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "pix/libs/QrToPng",
+					"childIndexes" : 
+					[
+						3,
+						6
+					],
+					"jsonFile" : "directory-pix.libs.QrToPng-Debug-d47406d4beba4f704494.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "pix/libs/QrToPng"
+				},
+				{
+					"build" : "pix/libs/QrToPng/libs",
+					"childIndexes" : 
+					[
+						4,
+						5
+					],
+					"jsonFile" : "directory-pix.libs.QrToPng.libs-Debug-d1a3ad5646af34732df1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "pix/libs/QrToPng/libs"
+				},
+				{
+					"build" : "pix/libs/QrToPng/libs/QR-Code-generator",
+					"jsonFile" : "directory-pix.libs.QrToPng.libs.QR-Code-generator-Debug-0a7a5f3e6867d730a8da.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "pix/libs/QrToPng/libs/QR-Code-generator",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "pix/libs/QrToPng/libs/tinypngout",
+					"jsonFile" : "directory-pix.libs.QrToPng.libs.tinypngout-Debug-469b3ed89df675eecbd4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "pix/libs/QrToPng/libs/tinypngout",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "pix/libs/QrToPng/src",
+					"jsonFile" : "directory-pix.libs.QrToPng.src-Debug-af9ccdadf015c0304d9a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "pix/libs/QrToPng/src",
+					"targetIndexes" : 
+					[
+						5,
+						6
+					]
+				},
+				{
+					"build" : "_deps/json-build",
+					"jsonFile" : "directory-_deps.json-build-Debug-d91a9d7d4c34801b13e2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.1"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 2,
+					"source" : "cmake-build-debug-mingw64-clang/_deps/json-src"
+				},
+				{
+					"build" : "pix/curlpp",
+					"childIndexes" : 
+					[
+						9
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-pix.curlpp-Debug-e5541eb052ab1cab0ae8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 3,
+					"source" : "pix/curlpp",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				},
+				{
+					"build" : "pix/curlpp/extras",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-pix.curlpp.extras-Debug-b2d93309f25bd6716b19.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 8,
+					"projectIndex" : 3,
+					"source" : "pix/curlpp/extras"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "Pix",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"name" : "cpp_qr_to_png",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4,
+						5,
+						6,
+						7
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "nlohmann_json",
+					"parentIndex" : 0
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8,
+						9
+					],
+					"name" : "curlpp",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "GPix::@38ed6422dfe4b7c24ef3",
+					"jsonFile" : "target-GPix-Debug-fb9e4fb4c7613f039317.json",
+					"name" : "GPix",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Pix::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Pix-Debug-75d20897e2ae727e8ae1.json",
+					"name" : "Pix",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "curlpp::@59424ddaa20238f42788",
+					"jsonFile" : "target-curlpp-Debug-67a5b49a4b61976b03fe.json",
+					"name" : "curlpp",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "curlpp_st::@59424ddaa20238f42788",
+					"jsonFile" : "target-curlpp_st-Debug-176cdcb28482e7b62ed9.json",
+					"name" : "curlpp_st",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "qr-code-generator::@d543ce80ea12440deaf9",
+					"jsonFile" : "target-qr-code-generator-Debug-75064d5ef03cafb2d2be.json",
+					"name" : "qr-code-generator",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "qr-to-png::@972f8f7681bd5d69aabd",
+					"jsonFile" : "target-qr-to-png-Debug-a365b145cac952304a40.json",
+					"name" : "qr-to-png",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "qr-to-png_static_lib::@972f8f7681bd5d69aabd",
+					"jsonFile" : "target-qr-to-png_static_lib-Debug-af12af4b5c01ac5dd8f4.json",
+					"name" : "qr-to-png_static_lib",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "tinypngoutput::@29ca8348896d7020f5a9",
+					"jsonFile" : "target-tinypngoutput-Debug-727427f5d8916892b722.json",
+					"name" : "tinypngoutput",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Administrator/CLionProjects/PixJS/cmake-build-debug-mingw64-clang",
+		"source" : "C:/Users/Administrator/CLionProjects/PixJS"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}

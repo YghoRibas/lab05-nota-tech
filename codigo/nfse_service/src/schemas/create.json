@@ -1,0 +1,194 @@
+{
+    "CreateNfsePayload": {
+        "type": "object",
+        "properties": {
+            "companyId": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "identificacao": {
+                "type": "object",
+                "properties": {
+                    "naturezaOperacao": {
+                        "type": "string"
+                    },
+                    "regimeEspecialTributacao": {
+                        "type": "string",
+                        "enum": [
+                            "Microempresa municipal",
+                            "Estimativa",
+                            "Sociedade de profissionais",
+                            "Cooperativa"
+                        ]
+                    },
+                    "optanteSimplesNacional": {
+                        "type": "boolean"
+                    },
+                    "incetivadorCultural": {
+                        "type": "boolean"
+                    },
+                    "competencia": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "tomador": {
+                    "type": "object",
+                    "properties": {
+                        "identificacao": {
+                            "type": "object",
+                            "properties": {
+                                "cpfcnpj": {
+                                    "type": "string",
+                                    "pattern": "([0-9]{2}?[0-9]{3}?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}?[0-9]{3}?[0-9]{3}?[0-9]{2})"
+                                },
+                                "inscricaomunicipal": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "cpfcnpj"
+                            ]
+                        },
+                        "razaosocial": {
+                            "type": "string"
+                        },
+                        "endereco": {
+                            "type": "object",
+                            "properties": {
+                                "endereco": {
+                                    "type": "string"
+                                },
+                                "numero": {
+                                    "type": "string"
+                                },
+                                "complemento": {
+                                    "type": "string"
+                                },
+                                "bairro": {
+                                    "type": "string"
+                                },
+                                "codigoMunicipio": {
+                                    "type": "string"
+                                },
+                                "cidade": {
+                                    "type": "string"
+                                },
+                                "uf": {
+                                    "type": "string"
+                                },
+                                "cep": {
+                                    "type": "string"
+                                }
+                            },
+                            "contato": {
+                                "type": "object",
+                                "properties": {
+                                    "telefone": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "telefone",
+                                    "email"
+                                ]
+                            }
+                        }
+                    },
+                    "servico": {
+                        "type": "object",
+                        "properties": {
+                            "valores": {
+                                "type": "object",
+                                "properties": {
+                                    "valorServicos": {
+                                        "type": "number"
+                                    },
+                                    "valorDeducoes": {
+                                        "type": "number"
+                                    },
+                                    "valorPis": {
+                                        "type": "number"
+                                    },
+                                    "valorCofins": {
+                                        "type": "number"
+                                    },
+                                    "valorInss": {
+                                        "type": "number"
+                                    },
+                                    "valorIr": {
+                                        "type": "number"
+                                    },
+                                    "valorCsll": {
+                                        "type": "number"
+                                    },
+                                    "issRetido": {
+                                        "type": "boolean"
+                                    },
+                                    "valorIss": {
+                                        "type": "number"
+                                    },
+                                    "outrasRetencoes": {
+                                        "type": "number"
+                                    },
+                                    "baseCalculo": {
+                                        "type": "number"
+                                    },
+                                    "aliquota": {
+                                        "type": "number"
+                                    },
+                                    "valorLiquidoNfse": {
+                                        "type": "number"
+                                    },
+                                    "valorIssRetido": {
+                                        "type": "number"
+                                    },
+                                    "descontoCondicionado": {
+                                        "type": "number"
+                                    },
+                                    "descontoIncondicionado": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "valorServicos",
+                                    "baseCalculo"
+                                ]
+                            },
+                            "itemListaServico": {
+                                "type": "string"
+                            },
+                            "codigoCnae": {
+                                "type": "string"
+                            },
+                            "codigoTributacaoMunicipio": {
+                                "type": "string"
+                            },
+                            "discriminacao": {
+                                "type": "string"
+                            },
+                            "codigoMunicipio": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "codigoMunicipio",
+                            "discriminacao",
+                            "valores",
+                            "itemListaServico"
+                        ]
+                    }
+                },
+                "required": [
+                    "companyId",
+                    "identificacao",
+                    "tomador",
+                    "servico"
+                ]
+            }
+        }
+    }
+}

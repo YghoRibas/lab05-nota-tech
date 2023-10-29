@@ -1,0 +1,21 @@
+# ninja log v5
+1517	1540	7149382482700267	C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-build	d5fdbf5f1562bb25
+0	27	7149382467568603	json-populate-prefix/src/json-populate-stamp/json-populate-mkdir	2f862793e05d17f2
+1586	1618	7149382483480265	json-populate-prefix/src/json-populate-stamp/json-populate-done	41c2ab3bc3fe4b32
+1471	1494	7149382482245045	C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-patch	9e8671c45e8e56ca
+0	27	7149382467568603	C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-mkdir	2f862793e05d17f2
+1586	1618	7149382483480265	C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-subbuild/CMakeFiles/json-populate-complete	41c2ab3bc3fe4b32
+1517	1540	7149382482700267	json-populate-prefix/src/json-populate-stamp/json-populate-build	d5fdbf5f1562bb25
+1446	1471	7149382482015053	json-populate-prefix/src/json-populate-stamp/json-populate-update	eef9fb3431f513a5
+1471	1494	7149382482245045	json-populate-prefix/src/json-populate-stamp/json-populate-patch	9e8671c45e8e56ca
+28	1446	7149382481759481	json-populate-prefix/src/json-populate-stamp/json-populate-download	3f1baa08e954cc07
+28	1446	7149382481759481	C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-download	3f1baa08e954cc07
+1446	1471	7149382482015053	C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-update	eef9fb3431f513a5
+1494	1517	7149382482475045	json-populate-prefix/src/json-populate-stamp/json-populate-configure	dd59dffb82f99a7
+1494	1517	7149382482475045	C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-configure	dd59dffb82f99a7
+1540	1563	7149382482930262	json-populate-prefix/src/json-populate-stamp/json-populate-install	ff66f3e8cef074a4
+1540	1563	7149382482930262	C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-install	ff66f3e8cef074a4
+1563	1586	7149382483160265	json-populate-prefix/src/json-populate-stamp/json-populate-test	5a56f1393e18ba80
+1563	1586	7149382483160265	C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-test	5a56f1393e18ba80
+1586	1618	7149382483480265	CMakeFiles/json-populate-complete	41c2ab3bc3fe4b32
+1586	1618	7149382483480265	C:/Users/Administrator/CLionProjects/PixJS/cmake-build-release-mingw64-clang/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-done	41c2ab3bc3fe4b32

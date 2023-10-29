@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Empresa {
+  id Int @id @default(autoincrement())
+  razaoSocial String
+  cnpj String
+  registroMunicipal String?
+  regimeEspecialTributacao RegimeEspecialTributacao
+  optanteSimplesNacional Boolean
+  clientes Cliente[]
+  endereco Endereco?
+  contato Contato?
+
+  @@map("empresa")
+}
+
+model Cliente {
+  id Int @id @default(autoincrement())
+  nome String
+  cpfCnpj String
+  registroMunicipal String?
+  endereco Endereco?
+  contato Contato?
+
+  empresa      Empresa? @relation(fields: [fk_idEmpresa], references: [id])
+  fk_idEmpresa Int
+
+  @@map("cliente")
+}
+
+model Endereco {
+  id Int @id @default(autoincrement())
+  rua String?
+  numero String?
+  complemento String?
+  bairro String?
+  codigoMunicipio String
+  cidade String?
+  uf String?
+  cep String?
+
+  empresa      Empresa? @relation(fields: [fk_idEmpresa], references: [id])
+  fk_idEmpresa Int @unique
+
+  cliente      Cliente? @relation(fields: [fk_idCliente], references: [id])
+  fk_idCliente Int @unique
+
+  @@map("endereco")
+}
+
+model Contato {
+  id Int @id @default(autoincrement())
+  telefone String
+  email String
+
+  empresa      Empresa? @relation(fields: [fk_idEmpresa], references: [id])
+  fk_idEmpresa Int @unique
+
+  cliente      Cliente? @relation(fields: [fk_idCliente], references: [id])
+  fk_idCliente Int @unique
+
+  @@map("contato")
+}
+
+enum RegimeEspecialTributacao {
+  Microempresa_Municipal
+  Estimativa
+  Sociedade_de_Profissionais
+  Cooperativa
+}

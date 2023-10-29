@@ -1,0 +1,21 @@
+:global .payment-actions {
+  .MuiMenuItem-root {
+    line-height: 1.57143;
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+    border-radius: 6px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+
+    svg {
+      margin-right: 10px;
+      padding: 0px;
+    }
+  }
+
+  .MuiPaper-root {
+    min-width: 175px;
+  }
+}

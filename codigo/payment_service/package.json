@@ -1,0 +1,67 @@
+{
+  "name": "payment_service",
+  "version": "1.0.0",
+  "description": "Responsible to manager the payment lifecycle",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx src/app.ts",
+    "start:prod": "cross-env NODE_ENV=production node lib/app.js",
+    "build": "tsc",
+    "build:ts": "tsup --env.NODE_ENV production",
+    "dev": "cross-env tsx watch src/app.ts",
+    "compile-schemas": "json2ts src/schemas -o src/types --enableConstEnums",
+    "emulator": "firebase emulators:start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lucas Pereira",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/amqplib": "^0.10.1",
+    "@types/node": "^18.15.11",
+    "@types/swagger-jsdoc": "^6.0.1",
+    "chai": "^4.3.7",
+    "cpy-cli": "^4.2.0",
+    "cross-env": "^7.0.3",
+    "fastify-tsconfig": "^1.0.1",
+    "json-schema-to-typescript": "^12.0.0",
+    "json2ts": "^0.0.7",
+    "source-map-support": "^0.5.21",
+    "tsconfig-paths": "^4.2.0",
+    "tsup": "^6.7.0",
+    "tsx": "^3.12.6",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@fastify/autoload": "^5.7.1",
+    "@fastify/cors": "^8.2.1",
+    "@fastify/swagger": "^8.3.1",
+    "@fastify/swagger-ui": "^1.6.0",
+    "@google-cloud/pubsub": "^4.0.6",
+    "@logtail/pino": "^0.4.12",
+    "@sinclair/typebox": "^0.26.8",
+    "ajv-keywords": "^5.1.0",
+    "amqplib": "^0.10.3",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.15.0",
+    "fastify-plugin": "^4.5.0",
+    "fastify-swagger": "^5.2.0",
+    "long": "^5.2.1",
+    "mongodb": "^6.1.0",
+    "pino-pretty": "^7.6.1",
+    "swagger-jsdoc": "^6.2.8"
+  },
+  "tsup": {
+    "entry": [
+      "src/**/*.ts"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true,
+    "format": [
+      "cjs"
+    ],
+    "target": "es2022",
+    "onSuccess": "npm run copy:assets"
+  }
+}

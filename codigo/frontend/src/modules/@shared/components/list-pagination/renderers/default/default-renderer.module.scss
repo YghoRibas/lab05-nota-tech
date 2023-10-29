@@ -1,0 +1,38 @@
+.tableContainer {
+  table-layout: fixed;
+  position: relative;
+
+  table {
+    table-layout: fixed;
+  }
+}
+
+.defaultClassName {
+  :global .pagination {
+    background-color: white;
+  }
+
+  :global .MuiTableContainer-root {
+    padding: 20px;
+    background: white;
+
+    thead th {
+      background: rgb(244, 246, 248);
+    }
+
+    .selecteds {
+      left: 28px;
+      width: calc(100% - 28px);
+      top: 20px;
+      background: rgb(255, 227, 213);
+      h6 {
+        color: red;
+        font-weight: bold;
+      }
+    }
+
+    .selectAll {
+      width: 50px !important;
+    }
+  }
+}

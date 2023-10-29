@@ -1,0 +1,579 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Nota Tech API",
+    "version": "0.0.1",
+    "description": "API para gerenciamento de pagamentos de serviços"
+  },
+  "host": "0.0.0.0:3000",
+  "paths": {
+    "/api/payments": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "description": "Cria uma `Payment`",
+        "requestBody": {
+          "required": true,
+          "description": "The `CreatePaymentPayload` data.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid json body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "description": "Lista um `Payment` com paginação.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "description": "The quantity of items to be returned per page."
+          },
+          {
+            "in": "query",
+            "name": "orderBy",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "asc"
+            },
+            "description": "The order in which the data should be listed."
+          },
+          {
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "status",
+                "competencia",
+                "createdAt"
+              ]
+            },
+            "description": "The type of ordering."
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "The page o return."
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Processando",
+                "Processado"
+              ]
+            },
+            "description": "The `Status` of the payment."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "retrieving with success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid querystring",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/payments/:id": {
+      "put": {
+        "tags": [
+          "Payment"
+        ],
+        "description": "Edita uma `Payment`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "description": "The Payment ID",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "The `CreatePaymentPayload` data.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentPayload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid json body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "description": "Retorna uma `Payment` pelo ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "description": "The Payment ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid json body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Payment"
+        ],
+        "description": "Deleta um `Payment`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "description": "The Payment ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "deleted with success."
+          },
+          "400": {
+            "description": "invalid Params ID.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/payments/:id/gerar_nfse": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "description": "Solicita a geração de uma NFSe para um `Payment`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "description": "The Payment ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "The request has been accepted for processing."
+          },
+          "400": {
+            "description": "invalid json body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "KeyTypes": {
+      "type": "string",
+      "enum": [
+        "CPF",
+        "CNPJ",
+        "EMAIL",
+        "TELEFONE",
+        "CHAVE_ALEATORIA"
+      ]
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "VALIDADO",
+        "RASCUNHO"
+      ]
+    },
+    "PaymentStatus": {
+      "type": "string",
+      "enum": [
+        "Processando",
+        "Processado"
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "InternalServerError": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "HTTP Status Code.",
+            "default": 500
+          },
+          "error": {
+            "type": "string",
+            "description": "HTTP Message Code.",
+            "default": "Internal Server Error"
+          },
+          "message": {
+            "type": "string",
+            "description": "A message describing the reason for the error."
+          }
+        }
+      },
+      "BadRequest": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "HTTP Status Code.",
+            "default": 400
+          },
+          "error": {
+            "type": "string",
+            "description": "HTTP Message Code.",
+            "default": "Bad Request"
+          },
+          "message": {
+            "type": "string",
+            "description": "A message describing the reason for the error."
+          }
+        }
+      },
+      "NotFound": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "HTTP Status Code.",
+            "default": 404
+          },
+          "error": {
+            "type": "string",
+            "description": "HTTP Message Code.",
+            "default": "Not Found"
+          },
+          "message": {
+            "type": "string",
+            "description": "A message describing the reason for the error."
+          }
+        }
+      },
+      "Payment": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "servico": {
+            "$ref": "#/components/schemas/Servico"
+          },
+          "clientId": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "companyId": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "PAID"
+            ],
+            "description": "Status do pagamento"
+          },
+          "pix_qrcode": {
+            "type": "string",
+            "description": "QRCode do PIX"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de pagamento",
+            "enum": [
+              "NORMAL",
+              "PIX"
+            ]
+          }
+        },
+        "required": [
+          "_id",
+          "servico",
+          "companyId",
+          "clientId",
+          "status",
+          "tipo"
+        ]
+      },
+      "CreatePaymentPayload": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "companyId": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "servico": {
+            "$ref": "#/components/schemas/Servico"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de pagamento",
+            "enum": [
+              "NORMAL",
+              "PIX"
+            ]
+          }
+        },
+        "required": [
+          "tipo",
+          "clientId",
+          "companyId",
+          "servico"
+        ]
+      },
+      "ID": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "Valores": {
+        "type": "object",
+        "properties": {
+          "valorServicos": {
+            "type": "number"
+          },
+          "baseCalculo": {
+            "type": "number"
+          },
+          "aliquota": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "valorServicos",
+          "baseCalculo"
+        ]
+      },
+      "Servico": {
+        "type": "object",
+        "properties": {
+          "valores": {
+            "$ref": "#/components/schemas/Valores"
+          },
+          "itemListaServico": {
+            "type": "string"
+          },
+          "codigoCnae": {
+            "type": "string"
+          },
+          "codigoTributacaoMunicipio": {
+            "type": "string"
+          },
+          "discriminacao": {
+            "type": "string"
+          },
+          "codigoMunicipio": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "codigoMunicipio",
+          "discriminacao",
+          "valores",
+          "itemListaServico"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

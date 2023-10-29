@@ -1,0 +1,375 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "pix/libGPix.dll"
+		},
+		{
+			"path" : "pix/libGPix.dll.a"
+		},
+		{
+			"path" : "pix/libGPix.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_options",
+			"target_link_libraries",
+			"add_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"pix/CMakeLists.txt",
+			"pix/libs/QrToPng/src/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 26,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 37,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 28,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 13,
+				"parent" : 4
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 6,
+				"parent" : 0
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 4,
+				"parent" : 7
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 43,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++2b -fcolor-diagnostics"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "CURL_STATICLIB"
+				},
+				{
+					"define" : "GPix_EXPORTS"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "NAPI_VERSION=4"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 9,
+					"path" : "C:/Users/Administrator/CLionProjects/PixJS/pix/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/Administrator/CLionProjects/PixJS/cmake-build-debug-mingw64-clang/_deps/json-src/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/Administrator/CLionProjects/PixJS/pix/libs/QrToPng/src"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/Administrator/CLionProjects/PixJS/pix/libs/QrToPng/libs/tinypngout"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/Administrator/CLionProjects/PixJS/pix/libs/QrToPng/libs/QR-Code-generator"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/Administrator/CLionProjects/PixJS/pix/curlpp/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					3
+				],
+				"standard" : "23"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "qr-code-generator::@d543ce80ea12440deaf9"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "tinypngoutput::@29ca8348896d7020f5a9"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "qr-to-png_static_lib::@972f8f7681bd5d69aabd"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "curlpp_st::@59424ddaa20238f42788"
+		}
+	],
+	"id" : "GPix::@38ed6422dfe4b7c24ef3",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-static",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "pix\\libs\\QrToPng\\src\\libqr-to-png_static_lib.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "pix\\curlpp\\libcurlpp_st.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-lc++",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "pix\\libs\\QrToPng\\libs\\tinypngout\\libtinypngoutput.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "pix\\libs\\QrToPng\\libs\\QR-Code-generator\\libqr-code-generator.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-Wl,-Bstatic",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcurl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lnghttp2",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lidn2",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lssh2",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lpsl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lbcrypt",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ladvapi32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcrypt32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lssl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcrypto",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgdi32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lwldap32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lzstd",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lbrotlidec",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lz",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lws2_32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-liconv",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lunistring",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lbrotlicommon",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-Wl,-Bdynamic",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "GPix",
+	"nameOnDisk" : "libGPix.dll",
+	"paths" : 
+	{
+		"build" : "pix",
+		"source" : "pix"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "pix/implementations/BancoDoBrasil/BBPix.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "pix/implementations/Bradesco/BradescoPix.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "pix/implementations/Itau/ItauPix.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "pix/implementations/Pix.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "pix/implementations/Sicoob/SicoobPix.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "pix/Helper.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "pix/Request.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

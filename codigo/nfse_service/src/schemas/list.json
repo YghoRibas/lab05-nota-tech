@@ -1,0 +1,60 @@
+{
+    "title": "List NFSe query string",
+    "type": "object",
+    "properties": {
+        "limit": {
+            "type": "integer",
+            "default": 20,
+            "description": "The quantity of items to be returned per page."
+        },
+        "orderBy": {
+            "description": "The order in which the data should be listed.",
+            "type": "string",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "default": "asc"
+        },
+        "sortBy": {
+            "type": "string",
+            "enum": [
+                "identificacao.numero",
+                "identificacao.competencia",
+                "createdAt"
+            ],
+            "description": "The type of ordering."
+        },
+        "page": {
+            "type": "integer",
+            "default": 1,
+            "description": "The page o return."
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "ENVIADO",
+                "EMITIDO",
+                "CANCELADO",
+                "ERROR"
+            ],
+            "description": "The `Status` of the nfse."
+        },
+        "competencia": {
+            "type": "string",
+            "format": "date",
+            "description": "The competencia date of nfse"
+        },
+        "companyId": {
+            "type": "string",
+            "description": "Date of competencia of nfse"
+        },
+        "numero": {
+            "type": "number",
+            "description": "The NFSe's number."
+        }
+    },
+    "required": [
+        "companyId"
+    ]
+}

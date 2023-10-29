@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  payment-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lucaspere/payment-service
+    container_name: payment-service
+    ports:
+      - 3000:3000
+    env_file: .env
+    environment:
+      - MONGO_URL=$MONGO_URL
+      - LOGTAIL_TOKEN=$LOGTAIL_TOKEN
+      - NODE_ENV=$NODE_ENV
